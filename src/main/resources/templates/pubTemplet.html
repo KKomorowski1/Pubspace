@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Pub Templet
+</h1>
+<form action="#" th:action="@{/page}" method="GET">
+
+    <p th:text="${model.name}">placeholder </p>
+    <p th:text="${model.address}">placeholder </p>
+    <p th:text="${model.seat}">placeholder</p>
+    <p th:text="${model.pubId}"> placeholder</p>
+
+
+</form>
+<form action="#" th:action="@{/saveUpdate}" method="POST" >
+
+    <input type="hidden"  th:attr="value = ${model.pubId}" >
+
+
+    <ul>
+        <li th:each="button : ${model.buttonList}">
+            <input type="radio" th:value="${button.key}" th:field="*{seat.space}"/>
+            <label th:text="${button.value}">placeholder</label>
+
+        </li>
+
+    </ul>
+
+
+    <input type="submit" value="wyslij">
+
+</form>
+</body>
+</html>

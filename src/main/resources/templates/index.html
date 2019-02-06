@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/index}" method="GET">
+
+
+    <div th:each="pub : ${model.pubs}">
+        <a href="#" th:href="@{/page(id=${pub.id})}">
+            <p th:text="${pub}"/>
+        </a>
+
+
+    </div>
+</form>
+</body>
+</html>
