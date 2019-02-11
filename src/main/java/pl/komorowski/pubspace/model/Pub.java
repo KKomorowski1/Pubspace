@@ -1,6 +1,7 @@
 package pl.komorowski.pubspace.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "pubs")
@@ -14,15 +15,26 @@ public class Pub {
     private String name;
     @Column(name = "address")
     private String address;
+    @OneToMany(mappedBy = "pub", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Seat> seat;
 
 
     public Pub() {
     }
 
+
     public Pub(int id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public Set<Seat> getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Set<Seat> seat) {
+        this.seat = seat;
     }
 
     public int getId() {
@@ -50,11 +62,10 @@ public class Pub {
         this.address = address;
     }
 
+
     @Override
     public String toString() {
         return
-                name + ' '
-                ;
+                "" + name;
     }
-
 }

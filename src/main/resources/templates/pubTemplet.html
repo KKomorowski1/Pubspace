@@ -5,21 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<h1>
+<h1 th:text="${model.name}">
     Pub Templet
 </h1>
 <form action="#" th:action="@{/page}" method="GET">
 
-    <p th:text="${model.name}">placeholder </p>
     <p th:text="${model.address}">placeholder </p>
-    <p th:text="${model.seat}">placeholder</p>
-    <p th:text="${model.pubId}"> placeholder</p>
 
+    <ul>
+        <li th:each="seat: ${model.time}">
+            <p th:text="|${#dates.format(seat.dateTime, 'HH:mm dd-MM-yyyy')} ${seat.space}|">placeholder </p>
+
+        </li>
+    </ul>
 
 </form>
-<form action="#" th:action="@{/saveUpdate}" method="POST" >
+<form action="#" th:action="@{/saveUpdate}" method="POST">
 
-    <input type="hidden"  th:attr="value = ${model.pubId}" >
+    <input type="hidden" data-th-value="${model.id}" name="pubId"/>
 
 
     <ul>

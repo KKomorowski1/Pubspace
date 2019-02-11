@@ -7,10 +7,8 @@ import java.util.List;
 
 public interface SeatRepo extends CrudRepository<Seat, Integer> {
 
-     List<Seat> findByPubId(int pubId);
+    List<Seat> findByPubId(int pubId);
 
-
-
-
+    List<Seat> findTop5ByPubIdOrderBySeatIdDesc(int pubId);
 
 }

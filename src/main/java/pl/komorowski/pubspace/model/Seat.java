@@ -1,11 +1,12 @@
 package pl.komorowski.pubspace.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
+@Table(name = "seat")
 public class Seat {
 
     @Id
@@ -14,22 +15,23 @@ public class Seat {
     @Column(name = "pub_id")
     private int pubId;
     @Column(name = "date_time")
-    private LocalDateTime dateTime;
+    @DateTimeFormat(pattern = "HH:mm yyyy-MM-dd")
+    private Timestamp dateTime;
     @Column(name = "space")
     private String space;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(insertable = false, updatable = false, name = "pub_id")
+    private Pub pub;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinColumn(name = "pub_id")
-//    private Pub pub;
-
-    //, insertable = false, updatable = false
-    public Seat(int seatId, LocalDateTime dateTime, int pubId, String space, Pub pub) {
+    public Seat(int seatId, Timestamp dateTime, int pubId, String space, Pub pub) {
         this.seatId = seatId;
         this.pubId = pubId;
         this.dateTime = dateTime;
         this.space = space;
-        //  this.pub = pub;
+        this.pub = pub;
     }
+
+
 
     public Seat() {
     }
@@ -50,11 +52,11 @@ public class Seat {
         this.pubId = pubId;
     }
 
-    public LocalDateTime getDateTime() {
+    public Timestamp getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -66,19 +68,19 @@ public class Seat {
         this.space = space;
     }
 
-//    public Pub getPub() {
-//        return pub;
-//    }
-//
-//    public void setPub(Pub pub) {
-//        this.pub = pub;
-//    }
+    public Pub getPub() {
+        return pub;
+    }
+
+    public void setPub(Pub pub) {
+        this.pub = pub;
+    }
 
     @Override
     public String toString() {
         return
 
-                space;  //pub;
+                space +"\n " + dateTime;  //pub;
 
     }
 
