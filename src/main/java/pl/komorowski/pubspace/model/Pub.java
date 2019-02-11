@@ -1,5 +1,7 @@
 package pl.komorowski.pubspace.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +17,7 @@ public class Pub {
     private String name;
     @Column(name = "address")
     private String address;
+    @JsonIgnore
     @OneToMany(mappedBy = "pub", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Seat> seat;
 

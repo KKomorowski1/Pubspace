@@ -55,7 +55,6 @@ public class MainController {
         model.put("seat", seatService.getAllSeat(id));
         model.put("buttonList", buttonService.populateSeat());
         model.put("id", pubService.getPub(id).getId());
-        model.put("space", seatService.getSeat(id).getSpace());
         model.put("time", seatService.getTen(id));
 
         return new ModelAndView("pubTemplet", "model", model);

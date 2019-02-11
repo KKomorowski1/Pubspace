@@ -14,7 +14,7 @@ public class PubController {
     private PubService pubService;
 
 
-    @RequestMapping("/pubs/")
+    @RequestMapping(value = "/pubs", method = RequestMethod.GET)
     public List<Pub> getAllPub() {
 
 

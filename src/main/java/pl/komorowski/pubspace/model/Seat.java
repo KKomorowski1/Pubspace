@@ -1,5 +1,6 @@
 package pl.komorowski.pubspace.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Seat {
     private Timestamp dateTime;
     @Column(name = "space")
     private String space;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(insertable = false, updatable = false, name = "pub_id")
     private Pub pub;
