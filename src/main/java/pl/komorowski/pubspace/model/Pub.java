@@ -3,10 +3,13 @@ package pl.komorowski.pubspace.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.Set;
 
 @Entity
 @Table(name = "pubs")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Pub {
 
     @Id

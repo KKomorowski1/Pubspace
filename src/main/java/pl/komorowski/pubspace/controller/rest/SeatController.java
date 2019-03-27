@@ -15,7 +15,7 @@ public class SeatController {
     @Autowired
     private SeatService seatService;
 
-    @RequestMapping("/pubs/{id}/seats/format=json")
+    @RequestMapping("/pubs/{id}/seats/")
     public List<Seat> getAllSeat(@PathVariable int id) {
 
         return seatService.getAllSeat(id);
