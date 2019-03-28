@@ -1,12 +1,10 @@
 package pl.komorowski.pubspace.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
 
 @Entity
@@ -17,22 +15,21 @@ public class Seat {
     @Id
     @Column(name = "seat_id")
     private int seatId;
-    @Column(name = "pub_id")
-    private int pubId;
+
     @Column(name = "date_time")
     private Timestamp dateTime;
     @Column(name = "space")
     private String space;
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(insertable=false, updatable=false, name = "pub_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pub_id")
     private Pub pub;
 
-    public Seat(int seatId, int pubId, Timestamp dateTime, String space) {
+    public Seat(int seatId, Timestamp dateTime, String space, Pub pub) {
         this.seatId = seatId;
-        this.pubId = pubId;
         this.dateTime = dateTime;
         this.space = space;
+        this.pub = pub;
     }
 
     public Seat() {
@@ -44,14 +41,6 @@ public class Seat {
 
     public void setSeatId(int seatId) {
         this.seatId = seatId;
-    }
-
-    public int getPubId() {
-        return pubId;
-    }
-
-    public void setPubId(int pubId) {
-        this.pubId = pubId;
     }
 
     public Timestamp getDateTime() {
