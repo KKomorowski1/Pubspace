@@ -67,7 +67,7 @@
 
     <ul>
         <li th:each="button : ${model.buttonList}">
-            <input type="radio" th:value="${button.key}" th:field="*{seat.space}"/>
+            <input type="radio" th:value="${button.key}" th:field="*{seat.space}" required/>
             <label th:text="${button.value}">placeholder</label>
 
         </li>
