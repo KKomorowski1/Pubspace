@@ -71,7 +71,7 @@ public class Seat {
     public String toString() {
         return
 
-                space +"\n " + dateTime;  //pub;
+                space + "\n " + dateTime;  //pub;
 
     }
 

@@ -21,7 +21,6 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-
     @Autowired
     private PubService pubService;
 
@@ -31,24 +30,20 @@ public class MainController {
     @Autowired
     private ButtonService buttonService;
 
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
 
         Map<String, Object> model = new HashMap<String, Object>();
 
         model.put("pubs", pubService.getAllPubs());
 
-
         return new ModelAndView("index", "model", model);
-
     }
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public ModelAndView getPub(@RequestParam(value = "id") int id, Seat seat, Pub pub) {
 
         Map<String, Object> model = new HashMap<String, Object>();
-
 
         model.put("name", pubService.getPub(id).getName());
         model.put("address", pubService.getPub(id).getAddress());
@@ -58,26 +53,18 @@ public class MainController {
         model.put("time", seatService.getTen(id));
 
         return new ModelAndView("pubTemplet", "model", model);
-
     }
-
 
     @PostMapping("/saveUpdate")
     public String saveUpdate(@Valid Seat seat, Pub pub, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-
-
             return "pubTemplet";
         }
 
-
         seatService.addSeat(seat);
 
-
-        return "redirect:/index";
-
-
+        return "redirect:/";
     }
 }
 
