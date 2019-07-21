@@ -37,15 +37,16 @@
 <div class="container">
     <form action="#" th:action="@{/index}" method="GET">
 
-
         <div th:each="pub : ${model.pubs}">
             <a href="#" th:href="@{/page(id=${pub.id})}">
                 <p th:text="${pub}"/>
             </a>
 
-
         </div>
     </form>
 </div>
+    <div th:each="last10 : ${model.last10}">
+        <p th:text="${last10}"/>
+    </div>
 </body>
 </html>

@@ -13,10 +13,8 @@ public class PubController {
     @Autowired
     private PubService pubService;
 
-
     @RequestMapping(value = "/pubs", method = RequestMethod.GET)
     public List<Pub> getAllPub() {
-
 
         return pubService.getAllPubs();
     }

@@ -14,14 +14,11 @@ public class PubService {
     @Autowired
     private PubRepo pubRepo;
 
-
-
     public List<Pub> getAllPubs() {
 
         List<Pub> pubs = new ArrayList<>();
         pubRepo.findAll().forEach(pubs::add);
         return pubs;
-
     }
 
     public Pub getPub(int id) {
@@ -42,6 +39,5 @@ public class PubService {
     public void deletePub(int id) {
         pubRepo.deleteById(id);
     }
-
 
 }

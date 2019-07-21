@@ -8,10 +8,8 @@ import java.util.Map;
 @Service
 public class ButtonService {
 
-
-
     public Map<String, String> populateSeat(){
-        Map<String, String> seat=new LinkedHashMap<String, String>();
+        Map<String, String> seat = new LinkedHashMap<>();
         seat.put("Brak miejsc", "Brak miejsc");
         seat.put("Okolo 5 miejsc", "Okolo 5 miejsc");
         seat.put("Okolo 10 miejsc", "Okolo 10 miejsc");

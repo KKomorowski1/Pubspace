@@ -24,10 +24,8 @@ public class Pub {
     @OneToMany(mappedBy = "pub", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Seat> seat;
 
-
     public Pub() {
     }
-
 
     public Pub(int id, String name, String address) {
         this.id = id;
@@ -67,7 +65,6 @@ public class Pub {
     public void setAddress(String address) {
         this.address = address;
     }
-
 
     @Override
     public String toString() {

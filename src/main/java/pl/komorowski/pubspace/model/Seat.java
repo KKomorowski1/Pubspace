@@ -18,8 +18,10 @@ public class Seat {
 
     @Column(name = "date_time")
     private Timestamp dateTime;
+
     @Column(name = "space")
     private String space;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pub_id")
@@ -70,9 +72,7 @@ public class Seat {
     @Override
     public String toString() {
         return
-
                 space + "\n " + dateTime;  //pub;
-
     }
 
 

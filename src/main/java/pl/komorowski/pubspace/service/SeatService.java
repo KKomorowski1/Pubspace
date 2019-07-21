@@ -2,6 +2,7 @@ package pl.komorowski.pubspace.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.komorowski.pubspace.DTO.PubspaceDto;
 import pl.komorowski.pubspace.model.Seat;
 import pl.komorowski.pubspace.repository.PubRepo;
 import pl.komorowski.pubspace.repository.SeatRepo;
@@ -16,37 +17,26 @@ public class SeatService {
 
     @Autowired
     private SeatRepo seatRepo;
-
     @Autowired
     private PubRepo pubRepo;
 
-
     public List<Seat> getAllSeat(int pubId) {
-
-
         List<Seat> seats = new ArrayList<>(5);
-
 
             seatRepo.findByPubId(pubId).forEach(seats::add);
 
         return seats;
     }
 
-
-    public List<Seat> getTen(int pubId) {
-
-
+    public List<Seat> getLast5(int pubId) {
         List<Seat> seats = new ArrayList<>();
-
 
         seatRepo.findTop5ByPubIdOrderBySeatIdDesc(pubId).forEach(seats::add);
 
         return seats;
     }
 
-
     public void addSeat(Seat seat) {
-
 
         LocalDateTime localDateTime = LocalDateTime.now();
 
@@ -67,6 +57,10 @@ public class SeatService {
         return seatRepo.findById(id).orElse(null);
     }
 
-
+    public List<PubspaceDto> get10LastUpdates() {
+        List<PubspaceDto> list = seatRepo.get10LastUpdates();
+        list.addAll(seatRepo.get10LastUpdates());
+        return list.subList(0, 9);
+    }
 
 }
