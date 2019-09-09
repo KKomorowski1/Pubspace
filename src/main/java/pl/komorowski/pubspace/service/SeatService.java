@@ -16,23 +16,23 @@ import java.util.List;
 @Service
 public class SeatService {
 
-    @Autowired
     private SeatRepo seatRepo;
+
+    @Autowired
+    public SeatService(SeatRepo seatRepo) {
+        this.seatRepo = seatRepo;
+    }
 
     public List<Seat> getAllSeat(int pubId) {
         List<Seat> seats = new ArrayList<>(5);
 
-            seatRepo.findByPubId(pubId).forEach(seats::add);
+        seats.addAll(seatRepo.findByPubId(pubId));
 
         return seats;
     }
 
     public List<Seat> getLast5(int pubId) {
-        List<Seat> seats = new ArrayList<>();
-
-        seatRepo.findTop5ByPubIdOrderBySeatIdDesc(pubId).forEach(seats::add);
-
-        return seats;
+        return new ArrayList<>(seatRepo.findTop5ByPubIdOrderBySeatIdDesc(pubId));
     }
 
     public void addSeat(Seat seat, int id) {
@@ -40,29 +40,24 @@ public class SeatService {
         Pub pub = new Pub(id);
 
         LocalDateTime localDateTime = LocalDateTime.now();
-
         Timestamp now = Timestamp.valueOf(localDateTime);
 
         seat.setDateTime(now);
-
         seat.setPub(pub);
 
         seatRepo.save(seat);
     }
 
     public void updateSeat(int id, Seat seat) {
-
         seatRepo.save(seat);
     }
 
     public Seat getSeat(int id) {
-
         return seatRepo.findById(id).orElse(null);
     }
 
     public List<PubspaceDto> get10LastUpdates() {
         List<PubspaceDto> list = seatRepo.get10LastUpdates();
-        list.addAll(seatRepo.get10LastUpdates());
         return list.subList(0, 9);
     }
 

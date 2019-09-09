@@ -11,28 +11,28 @@ import java.util.List;
 @Service
 public class PubService {
 
-    @Autowired
     private PubRepo pubRepo;
 
-    public List<Pub> getAllPubs() {
+    @Autowired
+    public PubService(PubRepo pubRepo) {
+        this.pubRepo = pubRepo;
+    }
 
+    public List<Pub> getAllPubs() {
         List<Pub> pubs = new ArrayList<>();
         pubRepo.findAll().forEach(pubs::add);
         return pubs;
     }
 
     public Pub getPub(int id) {
-
         return pubRepo.findById(id).orElse(null);
     }
 
     public void addPub(Pub pub) {
-
         pubRepo.save(pub);
     }
 
     public void updatePub(int id, Pub pub) {
-
         pubRepo.save(pub);
     }
 

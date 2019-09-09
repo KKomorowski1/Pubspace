@@ -11,20 +11,27 @@ import java.util.List;
 @RestController
 public class SeatController {
 
-    @Autowired
     private SeatService seatService;
 
-    @RequestMapping("/pubs/{id}/seats/")
-    public List<Seat> getAllSeat(@PathVariable int id) {
+    @Autowired
+    public SeatController(SeatService seatService) {
+        this.seatService = seatService;
+    }
 
+    @RequestMapping("/pubs/{id}/seats")
+    public List<Seat> getAllSeat(@PathVariable int id) {
         return seatService.getAllSeat(id);
+    }
+    @RequestMapping("/pubs/{id}/latest")
+    public List<Seat> getLatest5(@PathVariable int id) {
+        return seatService.getLast5(id);
     }
 
     @RequestMapping("/pubs/last10")
     public List<PubspaceDto> getLast10Seats() {
-
         return seatService.get10LastUpdates();
     }
+
     @RequestMapping(method = RequestMethod.POST, value = "/pubs/{id}/addUpdate")
     public Seat addUpdate(@PathVariable int id, @RequestBody Seat seat){
         seatService.addSeat(seat, id);
