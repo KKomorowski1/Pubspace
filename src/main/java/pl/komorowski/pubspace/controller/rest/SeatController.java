@@ -1,9 +1,7 @@
 package pl.komorowski.pubspace.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.komorowski.pubspace.DTO.PubspaceDto;
 import pl.komorowski.pubspace.model.Seat;
 import pl.komorowski.pubspace.service.SeatService;
@@ -26,5 +24,11 @@ public class SeatController {
     public List<PubspaceDto> getLast10Seats() {
 
         return seatService.get10LastUpdates();
+    }
+    @RequestMapping(method = RequestMethod.POST, value = "/pubs/{id}/addUpdate")
+    public Seat addUpdate(@PathVariable int id, @RequestBody Seat seat){
+        seatService.addSeat(seat, id);
+
+        return seat;
     }
 }

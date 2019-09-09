@@ -27,6 +27,10 @@ public class Pub {
     public Pub() {
     }
 
+    public Pub(int id) {
+        this.id = id;
+    }
+
     public Pub(int id, String name, String address) {
         this.id = id;
         this.name = name;
@@ -44,7 +48,6 @@ public class Pub {
     public int getId() {
         return id;
     }
-
 
     public void setId(int id) {
         this.id = id;

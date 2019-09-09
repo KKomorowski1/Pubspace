@@ -63,7 +63,6 @@
 <form action="#" th:action="@{/saveUpdate}" method="POST">
 
     <input type="hidden" data-th-value="${model.id}" name="pub"/>
-<!--  th:field="${seat.pub}" th:value="${model.id}"-->
 
     <ul>
         <li th:each="button : ${model.buttonList}">

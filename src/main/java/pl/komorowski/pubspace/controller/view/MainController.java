@@ -63,7 +63,7 @@ public class MainController {
             return "pubTemplet";
         }
 
-        seatService.addSeat(seat);
+        seatService.addSeat(seat, pub.getId());
 
         return "redirect:/";
     }
