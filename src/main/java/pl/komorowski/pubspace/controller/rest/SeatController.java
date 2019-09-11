@@ -22,6 +22,7 @@ public class SeatController {
     public List<Seat> getAllSeat(@PathVariable int id) {
         return seatService.getAllSeat(id);
     }
+
     @RequestMapping("/pubs/{id}/latest")
     public List<Seat> getLatest5(@PathVariable int id) {
         return seatService.getLast5(id);
