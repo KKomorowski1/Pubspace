@@ -5,6 +5,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class FeedbackMailSender implements FeedbackSender {
 
@@ -14,7 +16,7 @@ public class FeedbackMailSender implements FeedbackSender {
         mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(environment.getProperty("spring.mail.host"));
-        mailSender.setPort(Integer.parseInt(environment.getProperty("spring.mail.port")));
+        mailSender.setPort(Integer.parseInt(Objects.requireNonNull(environment.getProperty("spring.mail.port"))));
         mailSender.setUsername(environment.getProperty("spring.mail.username"));
         mailSender.setPassword(environment.getProperty("spring.mail.password"));
     }
@@ -22,7 +24,7 @@ public class FeedbackMailSender implements FeedbackSender {
     @Override
     public void sendFeedback(String from, String name, String feedback){
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("feedback@noteit.com");
+        message.setTo("feedback@pubspace.com");
         message.setSubject("New feedback from " + name);
         message.setText(feedback);
         message.setFrom(from);
