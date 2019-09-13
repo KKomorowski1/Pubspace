@@ -9,6 +9,7 @@ import pl.komorowski.pubspace.service.SeatService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class SeatController {
 
     private SeatService seatService;
@@ -23,7 +24,7 @@ public class SeatController {
         return seatService.getAllSeat(id);
     }
 
-    @RequestMapping("/pubs/{id}/latest")
+    @RequestMapping("/pubs/latest/{id}")
     public List<Seat> getLatest5(@PathVariable int id) {
         return seatService.getLast5(id);
     }
@@ -33,10 +34,9 @@ public class SeatController {
         return seatService.get10LastUpdates();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/pubs/{id}/addUpdate")
+    @RequestMapping(method = RequestMethod.POST, value = "/pubs/addUpdate/{id}")
     public Seat addUpdate(@PathVariable int id, @RequestBody Seat seat){
         seatService.addSeat(seat, id);
-
         return seat;
     }
 }

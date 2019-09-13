@@ -8,6 +8,7 @@ import pl.komorowski.pubspace.service.PubService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class PubController {
 
     private PubService pubService;
@@ -22,7 +23,7 @@ public class PubController {
         return pubService.getAllPubs();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/pubs/")
+    @RequestMapping(method = RequestMethod.POST, value = "/pubs")
     public void addPub(@RequestBody Pub pub) {
         pubService.addPub(pub);
     }

@@ -14,7 +14,6 @@ public class FeedbackMailSender implements FeedbackSender {
 
     public FeedbackMailSender(Environment environment){
         mailSender = new JavaMailSenderImpl();
-
         mailSender.setHost(environment.getProperty("spring.mail.host"));
         mailSender.setPort(Integer.parseInt(Objects.requireNonNull(environment.getProperty("spring.mail.port"))));
         mailSender.setUsername(environment.getProperty("spring.mail.username"));
