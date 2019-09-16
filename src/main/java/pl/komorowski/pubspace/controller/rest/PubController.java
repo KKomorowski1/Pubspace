@@ -18,7 +18,7 @@ public class PubController {
         this.pubService = pubService;
     }
 
-    @RequestMapping(value = "/pubs", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, value = "/pubs")
     public List<Pub> getAllPub() {
         return pubService.getAllPubs();
     }
@@ -28,7 +28,7 @@ public class PubController {
         pubService.addPub(pub);
     }
 
-    @RequestMapping("/pubs/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/pubs/{id}")
     public Pub getPub(@PathVariable int id) {
         return pubService.getPub(id);
     }
@@ -43,3 +43,19 @@ public class PubController {
         pubService.updatePub(id, pub);
     }
 }
+/*
+security:
+        oauth2:
+            client:
+                clientId: 809358122358-jn9ojomrpnk49qcbba16mp7cqujqnj8k.apps.googleusercontent.com
+                clientSecret: UtbvRKZ3e1a0B7_qSDBvwVBL
+                accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+                userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+                tokenName: oauth_token
+                authenticationScheme: query
+                clientAuthenticationScheme:
+                scope: profile email
+            resource:
+                userInfoUri: https://www.googleapis.com/userinfo/v2/me
+                preferTokenInfo: false
+ */
