@@ -1,0 +1,36 @@
+hibernate:
+    format_sql: true
+    id:
+        new_generator_mappings: false
+    show_sql: true
+spring:
+    datasource:
+        password: 14121991$$$Kk
+        url: jdbc:mysql://127.0.0.1:3306/pubspace?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: pubspace
+    jpa:
+        database-platform: org.hibernate.dialect.MySQLDialect
+        open-in-view: false
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+        show-sql: true
+    mail:
+        host: smtp.mailtrap.io
+        password: e142d6b932e840
+        port: 2525
+        username: 070556506c77bc
+    security:
+        oauth2:
+            client:
+                clientId: 809358122358-jn9ojomrpnk49qcbba16mp7cqujqnj8k.apps.googleusercontent.com
+                clientSecret: UtbvRKZ3e1a0B7_qSDBvwVBL
+                accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+                userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+                tokenName: oauth_token
+                authenticationScheme: query
+                clientAuthenticationScheme:
+                scope: profile email
+            resource:
+                userInfoUri: https://www.googleapis.com/userinfo/v2/me
+                preferTokenInfo: false
