@@ -1,11 +1,6 @@
 package pl.komorowski.pubspace.controller.rest;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-
-
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
@@ -13,8 +8,8 @@ import java.security.Principal;
 public class LoginController {
 
     @GetMapping(value = "/user")
-    public Principal user (Principal principal){
+    @ResponseBody
+    public Principal user(Principal principal) {
         return principal;
     }
-
 }
