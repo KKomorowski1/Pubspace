@@ -43,19 +43,3 @@ public class PubController {
         pubService.updatePub(id, pub);
     }
 }
-/*
-security:
-        oauth2:
-            client:
-                clientId: 809358122358-jn9ojomrpnk49qcbba16mp7cqujqnj8k.apps.googleusercontent.com
-                clientSecret: UtbvRKZ3e1a0B7_qSDBvwVBL
-                accessTokenUri: https://www.googleapis.com/oauth2/v3/token
-                userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
-                tokenName: oauth_token
-                authenticationScheme: query
-                clientAuthenticationScheme:
-                scope: profile email
-            resource:
-                userInfoUri: https://www.googleapis.com/userinfo/v2/me
-                preferTokenInfo: false
- */
