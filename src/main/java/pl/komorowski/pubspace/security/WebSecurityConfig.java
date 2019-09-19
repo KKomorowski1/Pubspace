@@ -13,17 +13,17 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableOAuth2Client
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http
-                    .httpBasic().and()
-                    .csrf().disable()
-                    .formLogin().disable()
-                    .antMatcher("/**")
-                    .authorizeRequests()
-                    .antMatchers("/", "/callback", "/login**", "/webjars/**", "/error**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated();
-        }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .httpBasic().and()
+                .csrf().disable()
+                .formLogin().disable()
+                .antMatcher("/**")
+                .authorizeRequests()
+                .antMatchers("/", "/callback", "/login**", "/webjars/**", "/error**", "/pubs")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
+    }
 }

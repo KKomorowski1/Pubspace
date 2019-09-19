@@ -32,7 +32,6 @@ security:
             clientAuthenticationScheme: form
             scope: openid, profile, email
             authorized-grant-types: implicit
-            authorities: https://accounts.google.com/809358122358-jn9ojomrpnk49qcbba16mp7cqujqnj8k.apps.googleusercontent.com
         resource:
             userInfoUri: https://www.googleapis.com/userinfo/v2/me
             preferTokenInfo: false
