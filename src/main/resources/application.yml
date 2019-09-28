@@ -30,9 +30,14 @@ security:
             tokenName: oauth_token
             authenticationScheme: query
             clientAuthenticationScheme: form
-            scope: openid, profile, email
-            authorized-grant-types: implicit
+            scope: profile, email
         resource:
             userInfoUri: https://www.googleapis.com/userinfo/v2/me
-            preferTokenInfo: false
-
+            preferTokenInfo: true
+management:
+    endpoints:
+        web:
+            cors:
+                allowed-headers: http://localhost:4200
+                allowed-methods: POST, OPTIONS
+                allowed-origins: /
