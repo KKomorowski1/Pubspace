@@ -1,6 +1,7 @@
 package pl.komorowski.pubspace.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import pl.komorowski.pubspace.model.Pub;
 import pl.komorowski.pubspace.repository.PubRepo;
@@ -18,14 +19,15 @@ public class PubService {
         this.pubRepo = pubRepo;
     }
 
-    public List<Pub> getAllPubs() {
-        List<Pub> pubs = new ArrayList<>();
-        pubRepo.findAll().forEach(pubs::add);
-        return pubs;
+    public PubService() {
+    }
+
+    public List getAllPubs() {
+        return new ArrayList<>(pubRepo.findAll());
     }
 
     public Pub getPub(int id) {
-        return pubRepo.findById(id).orElse(null);
+        return pubRepo.findById(id);
     }
 
     public void addPub(Pub pub) {

@@ -2,6 +2,8 @@ package pl.komorowski.pubspace.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+import pl.komorowski.pubspace.exception.NoContent;
 import pl.komorowski.pubspace.model.Pub;
 import pl.komorowski.pubspace.service.PubService;
 
@@ -19,8 +21,13 @@ public class PubController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/pubs")
-    public List<Pub> getAllPub() {
-        return pubService.getAllPubs();
+    public List getAllPub() {
+        List getAllList = pubService.getAllPubs();
+        if (getAllList == null){
+            String message = "No pubs to Display";
+            throw new NoContent(message);
+        }
+        return getAllList;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/pubs")
@@ -30,7 +37,12 @@ public class PubController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/pubs/{id}")
     public Pub getPub(@PathVariable int id) {
-        return pubService.getPub(id);
+        Pub pub = pubService.getPub(id);
+        if (pub == null){
+            String message = "No pub corresponding with this id";
+            throw new NoContent(message);
+        }
+        return pub;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/pubs/{id}")

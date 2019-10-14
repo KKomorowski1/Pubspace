@@ -20,7 +20,6 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(@NotNull HttpSecurity http) throws Exception {
-
         http
                 .cors().and()
                 .antMatcher("/**")
@@ -30,6 +29,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers(HttpMethod.GET, "/pubs/last10").permitAll()
                 .antMatchers(HttpMethod.GET, "/pubs/latest/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/user").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/feedback").permitAll()
                 .anyRequest().authenticated();
 
     }

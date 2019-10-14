@@ -7,9 +7,12 @@ hibernate:
     show_sql: true
 spring:
     datasource:
-        password: 14121991$$$Kk
-        url: jdbc:mysql://127.0.0.1:3306/pubspace?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: pubspace
+        username: uQutTwCsDl
+        password: s19Z0sDpEB
+        url: jdbc:mysql://remotemysql.com:3306/uQutTwCsDl?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        #url: jdbc:mysql://127.0.0.1:3306/pubspace?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        #password: 14121991$$$Kk
+        #username: pubspace
     jpa:
         database-platform: org.hibernate.dialect.MySQLDialect
         open-in-view: false
