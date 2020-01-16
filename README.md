@@ -6,8 +6,8 @@ Main idea behind Pubspace is to make it easier to find place to sit on weekend e
 
 ## Techonologies
 
-*Java 11
-*Spring Boot
-*JPA
-*Angular
-*MySql
+* Java 11
+* Spring Boot
+* JPA
+* Angular
+* MySql
